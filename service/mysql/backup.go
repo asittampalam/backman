@@ -51,10 +51,11 @@ func Backup(ctx context.Context, s3 *s3.Client, service util.Service, binding *c
 
 	// prepare mysqldump command
 	var command []string
-	command = append(command, "mysqldump")
+	command = append(command, "mysqlpump")
 	command = append(command, "--single-transaction")
 	command = append(command, "--quick")
 	command = append(command, "--skip-add-locks")
+	command = append(command, "--skip-definer")
 	command = append(command, "-h")
 	command = append(command, host)
 	command = append(command, "-P")
